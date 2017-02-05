@@ -17,6 +17,7 @@
     "morgan": "^1.8.0",
     "nodemon": "^1.11.0",
     "pug": "^2.0.0-beta11",
+    "url-factory": "^2.0.0",
     "yet-another-name-generator": "^1.0.4"
   },
   "devDependencies": {
