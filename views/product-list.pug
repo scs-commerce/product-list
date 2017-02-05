@@ -12,7 +12,7 @@ html(lang="en")
             p= product.description
 
     if page > 0
-      a(href=`/products?page=${page - 1}` rel="prev") Previous
+      a(href=`/?page=${page - 1}` rel="prev") Previous
 
     if page > 0 && page < (pageCount - 1)
       = " "
@@ -20,4 +20,4 @@ html(lang="en")
       = " "
 
     if page < (pageCount - 1)
-      a(href=`/products?page=${page + 1}` rel="next") Next
+      a(href=`/?page=${page + 1}` rel="next") Next

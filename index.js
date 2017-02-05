@@ -8,7 +8,7 @@ app.use(morgan('combined'))
 
 app.set('view engine', 'pug')
 
-app.get('/products', (req, res, next) => {
+app.get('/', (req, res, next) => {
   const page = (req.query.page && parseInt(req.query.page)) || 0
   if (products[page]) {
     res.status(200).render('product-list', { products: products[page], page, pageCount: products.length })
