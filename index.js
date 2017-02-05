@@ -23,4 +23,5 @@ app.use((req, res, next) =>
 app.use((error, req, res, next) =>
   res.status(500).render('500', { error }))
 
-app.listen(3001)
+console.log(`start listening on port ${process.env.PORT}`)
+app.listen(process.env.PORT)
