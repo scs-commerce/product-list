@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lorem-ipsum": "^1.0.3",
+    "yet-another-name-generator": "^1.0.4"
+  },
   "devDependencies": {
     "eslint": "^3.15.0",
     "standard": "^8.6.0"
