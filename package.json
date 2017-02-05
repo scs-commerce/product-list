@@ -4,8 +4,14 @@
   "main": "index.js",
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
+    "express": "^4.14.1",
     "lorem-ipsum": "^1.0.3",
+    "morgan": "^1.8.0",
+    "pug": "^2.0.0-beta11",
     "yet-another-name-generator": "^1.0.4"
   },
   "devDependencies": {
