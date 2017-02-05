@@ -5,7 +5,8 @@
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=$npm_package_config_port node index.js"
+    "start": "PORT=$npm_package_config_port node index.js",
+    "watch": "nodemon -e js,pug --watch index.js --watch views --exec 'npm start'"
   },
   "config": {
     "port": 3001
@@ -14,6 +15,7 @@
     "express": "^4.14.1",
     "lorem-ipsum": "^1.0.3",
     "morgan": "^1.8.0",
+    "nodemon": "^1.11.0",
     "pug": "^2.0.0-beta11",
     "yet-another-name-generator": "^1.0.4"
   },
