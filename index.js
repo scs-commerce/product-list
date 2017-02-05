@@ -9,7 +9,7 @@ app.set('view engine', 'pug')
 
 app.get('/products', (req, res) => {
   const page = req.query.page
-  res.status(200).send(JSON.stringify(products[page]))
+  res.status(200).render('product-list', { products: products[page] })
 })
 
 app.listen(3001)

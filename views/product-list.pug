@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Document
+body
+  ul.products
+    each product in products
+      li.product-item
+        div.product
+          h3= product.name
+          p= product.description
