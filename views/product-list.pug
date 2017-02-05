@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 html(lang="en")
-head
-  meta(charset="UTF-8")
-  title Document
-body
-  ul.products
-    each product in products
-      li.product-item
-        div.product
-          h3= product.name
-          p= product.description
+  head
+    meta(charset="UTF-8")
+    title Document
+  body
+    ul.products
+      each product in products
+        li.product-item
+          div.product
+            h3= product.name
+            p= product.description
+
+    if page > 0
+      a(href=`/products?page=${page - 1}` rel="prev") Previous
+
+    if page > 0 && page < (pageCount - 1)
+      = " "
+      | |
+      = " "
+
+    if page < (pageCount - 1)
+      a(href=`/products?page=${page + 1}` rel="next") Next
