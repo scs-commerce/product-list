@@ -1,26 +1,20 @@
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    title Document
-  body
-    h1 Products
+product-list
+  ul.products
+    each product, index in products
+      product-item(data-id=`${(Math.max(0, page - 1) * pageCount) + index}`)
+        li
+          h3.product-name= product.name
+          p= product.description
+          span Im Warenkorb
 
-    ul.products
-      each product in products
-        li.product-item
-          div.product
-            h3= product.name
-            p= product.description
+  if page > 0
+    //- a(href=`/?page=${page - 1}` rel="prev") Previous
+    a(href=link('/', { page: page - 1 }) rel="prev") Previous
 
-    if page > 0
-      //- a(href=`/?page=${page - 1}` rel="prev") Previous
-      a(href=link('/', { page: page - 1 }) rel="prev") Previous
+  if page > 0 && page < (pageCount - 1)
+    = " "
+    | |
+    = " "
 
-    if page > 0 && page < (pageCount - 1)
-      = " "
-      | |
-      = " "
-
-    if page < (pageCount - 1)
-      a(href=link('/', { page: page + 1 }) rel="next") Next
+  if page < (pageCount - 1)
+    a(href=link('/', { page: page + 1 }) rel="next") Next
