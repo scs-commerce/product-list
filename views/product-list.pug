@@ -1,11 +1,10 @@
 product-list
   ul.products
     each product, index in products
-      product-item(data-id=`${(Math.max(0, page - 1) * pageCount) + index}`)
-        li
-          h3.product-name= product.name
-          p= product.description
-          span Im Warenkorb
+      product-item.card(data-id=`${(Math.max(0, page - 1) * pageCount) + index}`)
+        li.card-block
+          h3.card-title.product-name= product.name
+          p.card-text= product.description
 
   if page > 0
     //- a(href=`/?page=${page - 1}` rel="prev") Previous
