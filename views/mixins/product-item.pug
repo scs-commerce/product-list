@@ -1,0 +1,6 @@
+mixin product-item(product, page, pageCount, index)
+  product-item.card(data-id=`${(Math.max(0, page - 1) * pageCount) + index}`)
+    li.card-block
+      h3.card-title.product-name= product.name
+      p.card-text= product.description
+      img.photo(src=link(`/images/${Math.ceil(Math.random() * 100 % 22)}.jpg`))

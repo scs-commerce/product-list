@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const urlFactory = require('url-factory').default
@@ -5,6 +6,7 @@ const urlFactory = require('url-factory').default
 const products = require('./products')
 
 const app = express()
+app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
 app.set('view engine', 'pug')

@@ -1,10 +1,9 @@
+include mixins/product-item
+
 product-list
   ul.products
     each product, index in products
-      product-item.card(data-id=`${(Math.max(0, page - 1) * pageCount) + index}`)
-        li.card-block
-          h3.card-title.product-name= product.name
-          p.card-text= product.description
+      +product-item(product, page, pageCount, index)
 
   if page > 0
     //- a(href=`/?page=${page - 1}` rel="prev") Previous
