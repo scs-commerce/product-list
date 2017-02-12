@@ -3,4 +3,8 @@ mixin product-item(product, page, pageCount, index)
     li.card-block
       h3.card-title.product-name= product.name
       p.card-text= product.description
+      p.price(data-price=product.price)
+        = product.price
+        = " "
+        | EUR
       img.photo(src=link(`/images/${Math.ceil(Math.random() * 100 % 22)}.jpg`))
