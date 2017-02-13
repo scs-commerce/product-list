@@ -6,6 +6,7 @@ const urlFactory = require('url-factory').default
 const config = require('./package.json').config
 
 const products = require('./products')
+const pagedProducts = products.paged
 
 const app = express()
 app.use('/images', express.static(path.join(__dirname, 'images')))
@@ -18,11 +19,21 @@ app.get('/', (req, res, next) => {
 
   const page = (req.query.page && parseInt(req.query.page)) || 0
 
-  if (products[page]) {
-    res.status(200).render('product-list', { products: products[page], page, pageCount: products.length, link })
+  if (pagedProducts[page]) {
+    res.status(200).render('product-list', { products: pagedProducts[page], page, pageCount: pagedProducts.length, link })
   } else {
     next()
   }
+})
+
+app.get('/:id', (req, res, next) => {
+  const product = products.find(parseInt(req.params.id))
+
+  if (product) {
+    return res.status(200).render('product', { product })
+  }
+
+  next()
 })
 
 app.use((req, res, next) => {

@@ -1,5 +1,5 @@
 mixin product-item(product, page, pageCount, index)
-  product-item.card(data-id=`${(Math.max(0, page - 1) * pageCount) + index}`)
+  product-item.card(data-id=`${product.id}`)
     li.card-block
       h3.card-title.product-name= product.name
       p.card-text= product.description

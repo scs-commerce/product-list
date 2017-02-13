@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title LandingPage
+    link(
+       rel="stylesheet"
+       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+       integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+       crossorigin="anonymous")
+
+    link(
+      rel="stylesheet"
+      href="/assets/styles/scs-commerce.main.css")
+  body
+    .container
+      include ../partials/nav
+
+      block content
+
+    script(src="/assets/systemjs/dist/system.js")
+
+    script.
+      //- var dependencies = []
+      System.config({
+        map: {
+          'zepto': '/assets/zepto/dist/zepto.js',
+          'document-register-element': '/assets/document-register-element/build/document-register-element.js',
+          'fetch': '/assets/whatwg-fetch/fetch.js',
+          'javascripts/*': '/assets/javascripts/*'
+        }
+      })
+
+      const dependencies = [SystemJS.import('document-register-element'), SystemJS.import('document-register-element')]
+
+      if (typeof fetch !== 'function') dependencies.push(SystemJS.import('fetch'))
+
+      Promise.all(dependencies)
+        .then(() => SystemJS.import('assets/javascripts/scs-commerce.main.js'))
+        .catch(e => console.log(e))
