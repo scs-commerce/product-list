@@ -30,11 +30,12 @@ app.get('/', (req, res, next) => {
 app.get('/:id', (req, res, next) => {
   // base url for link factory without id param
   const link = linkFactory(url.resolve(req.headers.host, '.'))
+  const order = urlFactory('/order')
 
   const product = products.find(parseInt(req.params.id))
 
   if (product) {
-    return res.status(200).render('product', { product, link })
+    return res.status(200).render('product', { product, link, order })
   }
 
   next()
@@ -54,7 +55,7 @@ console.log(`start listening on port ${port}`)
 app.listen(port)
 
 function stripTrailingSlash (host) {
-  const cleaned = host.replace(/\/$/, '')
+  const cleaned = host.replace(/\/$/, '').replace(/:$/, '')
   console.log(cleaned)
   return cleaned
 }
