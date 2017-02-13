@@ -1,10 +1,11 @@
 mixin product-item(product)
   product-item.card(data-id=`${product.id}`)
     li.card-block
-      h3.card-title.product-name= product.name
-      p.card-text= product.description
-      p.price(data-price=product.price)
-        = product.price
-        = " "
-        | EUR
-      img.photo(src=link(`/images/${Math.ceil(Math.random() * 100 % 22)}.jpg`))
+      a(href=link(`/${product.id}`))
+        h3.card-title.product-name= product.name
+        p.card-text= product.description
+        p.price(data-price=product.price)
+          = product.price
+          = " "
+          | EUR
+        img.photo(src=link(`/images/${Math.ceil(Math.random() * 100 % 22)}.jpg`))
