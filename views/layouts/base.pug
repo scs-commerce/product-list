@@ -36,5 +36,5 @@ html(lang="en")
       if (typeof fetch !== 'function') dependencies.push(SystemJS.import('fetch'))
 
       Promise.all(dependencies)
-        .then(() => SystemJS.import('assets/javascripts/scs-commerce.main.js'))
+        .then(() => SystemJS.import('/assets/javascripts/scs-commerce.main.js'))
         .catch(e => console.log(e))

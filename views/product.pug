@@ -1,6 +1,6 @@
 extends layouts/base
 
+include mixins/product-details
+
 block content
-  h1= product.name
-  p= product.description
-  p #{product.price} EUR
+  +product-details(product)

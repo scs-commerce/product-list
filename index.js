@@ -1,3 +1,4 @@
+const url = require('url')
 const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
@@ -15,7 +16,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 app.set('view engine', 'pug')
 
 app.get('/', (req, res, next) => {
-  const link = linkFactory(req)
+  const link = linkFactory(req.headers.host)
 
   const page = (req.query.page && parseInt(req.query.page)) || 0
 
@@ -27,10 +28,13 @@ app.get('/', (req, res, next) => {
 })
 
 app.get('/:id', (req, res, next) => {
+  // base url for link factory without id param
+  const link = linkFactory(url.resolve(req.headers.host, '.'))
+
   const product = products.find(parseInt(req.params.id))
 
   if (product) {
-    return res.status(200).render('product', { product })
+    return res.status(200).render('product', { product, link })
   }
 
   next()
@@ -55,6 +59,6 @@ function stripTrailingSlash (host) {
   return cleaned
 }
 
-function linkFactory (req) {
-  return urlFactory(`//${stripTrailingSlash(req.headers.host)}`)
+function linkFactory (host) {
+  return urlFactory(`//${stripTrailingSlash(host)}`)
 }

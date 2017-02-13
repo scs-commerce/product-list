@@ -1,6 +1,6 @@
-mixin product-item(product)
-  product-item.card(data-id=`${product.id}`)
-    li.card-block
+mixin product-details(product)
+  product-details.card
+    .card-block
       h3.card-title.product-name= product.name
       p.card-text= product.description
       p.price(data-price=product.price)
