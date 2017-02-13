@@ -5,7 +5,7 @@
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=$npm_package_config_port node index.js",
+    "start": "node index.js",
     "watch": "nodemon -e js,pug --watch index.js --watch views --exec 'npm start'"
   },
   "config": {
