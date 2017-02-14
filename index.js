@@ -3,6 +3,7 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const urlFactory = require('url-factory').default
+const accepts = require('accepts')
 
 const config = require('./package.json').config
 
@@ -16,12 +17,23 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 app.set('view engine', 'pug')
 
 app.get('/', (req, res, next) => {
+  const accept = accepts(req)
   const link = linkFactory(req.headers.host)
 
   const page = (req.query.page && parseInt(req.query.page)) || 0
 
   if (pagedProducts[page]) {
-    res.status(200).render('product-list', { products: pagedProducts[page], page, pageCount: pagedProducts.length, link })
+    switch (accept.type(['html', 'json'])) {
+      case 'html':
+        res.setHeader('Content-Type', 'text/html')
+        res.status(200).render('product-list', { products: pagedProducts[page], page, pageCount: pagedProducts.length, link })
+        break
+      case 'json':
+        res.setHeader('Content-Type', 'application/json')
+        // NOTE: usually this should also be paged, but this feature is omitted intentionelly
+        res.status(200).send(JSON.stringify({ products: products.all }))
+        break
+    }
   } else {
     next()
   }
