@@ -5,4 +5,4 @@ include mixins/product-details
 block content
   +product-details(product)
 
-  | <!--# include virtual="!{order('/basket/new', { id: product.id, name: product.name, price: product.price })}" -->
+  | <!--# include virtual="!{order('/basket/new', { id: product.id })}" -->
