@@ -1,3 +1,4 @@
+require('now-logs')('dbpYBCwPARPiesmVfUcGQhaawuAxraj8ZumyL6sA4KazcPzig79Yrn#Ja/F=uLko')
 const url = require('url')
 const path = require('path')
 const express = require('express')
@@ -5,16 +6,17 @@ const morgan = require('morgan')
 const urlFactory = require('url-factory').default
 const accepts = require('accepts')
 
-const config = require('./package.json').config
+const config = require('../package.json').config
 
 const products = require('./products')
 const pagedProducts = products.paged
 
 const app = express()
-app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
+app.use('/images', express.static(path.join(__dirname, 'images')))
 app.set('view engine', 'pug')
+app.set('views', 'src/views')
 
 app.get('/', (req, res, next) => {
   const accept = accepts(req)
