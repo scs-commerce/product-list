@@ -1,4 +1,3 @@
-require('now-logs')('dbpYBCwPARPiesmVfUcGQhaawuAxraj8ZumyL6sA4KazcPzig79Yrn#Ja/F=uLko')
 const url = require('url')
 const path = require('path')
 const express = require('express')
